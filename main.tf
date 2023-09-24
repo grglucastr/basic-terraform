@@ -19,18 +19,6 @@ resource "aws_instance" "dev" {
   vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
 }
 
-resource "aws_instance" "dev4" {
-  ami             = var.amis[var.region_us_east_1]
-  instance_type   = var.instance_type
-  key_name        = var.key_name
-  tags = {
-    Name = "dev4"
-  }
-
-  vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
-  depends_on = [ aws_s3_bucket.dev4 ]
-}
-
 resource "aws_instance" "dev5" {
   ami             = var.amis[var.region_us_east_1]
   instance_type   = var.instance_type
@@ -40,13 +28,6 @@ resource "aws_instance" "dev5" {
   }
 
   vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
-}
-
-resource "aws_s3_bucket" "dev4" {
-  bucket          = var.bucket_name
-  tags = {
-    Name          = var.bucket_name
-  }
 }
 
 resource "aws_instance" "dev6" {
