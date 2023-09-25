@@ -73,3 +73,11 @@ resource "aws_dynamodb_table" "dynamodb-homologacao" {
     type = "S"
   }
 }
+
+resource "aws_s3_bucket" "homologacao" {
+  provider = aws
+  bucket = "bennun-labs-homolog"
+  tags = {
+    Name = "bennun-labs-homolog"
+  }  
+}
